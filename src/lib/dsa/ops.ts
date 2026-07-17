@@ -33,15 +33,15 @@ const empty = (msg: string, payload: unknown): Step[] => [{ note: msg, payload }
 // VECTOR / DYNAMIC ARRAY
 // =====================================================================
 export const vectorOpsDefs: OpDef[] = [
-  { id: "push_back", label: "push_back(v)", args: [{ name: "v", kind: "number", placeholder: "value" }] },
-  { id: "pop_back", label: "pop_back()" },
-  { id: "push_front", label: "push_front(v)", args: [{ name: "v", kind: "number" }] },
-  { id: "pop_front", label: "pop_front()" },
-  { id: "insert", label: "insert(i, v)", args: [{ name: "i", kind: "number" }, { name: "v", kind: "number" }] },
-  { id: "erase", label: "erase(i)", args: [{ name: "i", kind: "number" }] },
-  { id: "at", label: "at(i)", args: [{ name: "i", kind: "number" }] },
-  { id: "size", label: "size()" },
-  { id: "clear", label: "clear()" },
+  { id: "push_back", label: "push_back(v)", args: [{ name: "v", kind: "number", placeholder: "value" }], complexity: { time: "O(1) amortized", space: "O(1)" } },
+  { id: "pop_back", label: "pop_back()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "push_front", label: "push_front(v)", args: [{ name: "v", kind: "number" }], complexity: { time: "O(n)", space: "O(1)" } },
+  { id: "pop_front", label: "pop_front()", complexity: { time: "O(n)", space: "O(1)" } },
+  { id: "insert", label: "insert(i, v)", args: [{ name: "i", kind: "number" }, { name: "v", kind: "number" }], complexity: { time: "O(n)", space: "O(1)" } },
+  { id: "erase", label: "erase(i)", args: [{ name: "i", kind: "number" }], complexity: { time: "O(n)", space: "O(1)" } },
+  { id: "at", label: "at(i)", args: [{ name: "i", kind: "number" }], complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "size", label: "size()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "clear", label: "clear()", complexity: { time: "O(n)", space: "O(1)" } },
 ];
 
 export function vectorRunOps(cmds: OpCommand[]): Step[] {
@@ -108,11 +108,11 @@ export function vectorRunOps(cmds: OpCommand[]): Step[] {
 // STACK
 // =====================================================================
 export const stackOpsDefs: OpDef[] = [
-  { id: "push", label: "push(v)", args: [{ name: "v", kind: "number" }] },
-  { id: "pop", label: "pop()" },
-  { id: "peek", label: "peek() / top()" },
-  { id: "size", label: "size()" },
-  { id: "clear", label: "clear()" },
+  { id: "push", label: "push(v)", args: [{ name: "v", kind: "number" }], complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "pop", label: "pop()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "peek", label: "peek() / top()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "size", label: "size()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "clear", label: "clear()", complexity: { time: "O(n)", space: "O(1)" } },
 ];
 export function stackRunOps(cmds: OpCommand[]): Step[] {
   const s: number[] = [];
@@ -150,11 +150,11 @@ export function stackRunOps(cmds: OpCommand[]): Step[] {
 // QUEUE
 // =====================================================================
 export const queueOpsDefs: OpDef[] = [
-  { id: "enqueue", label: "enqueue(v)", args: [{ name: "v", kind: "number" }] },
-  { id: "dequeue", label: "dequeue()" },
-  { id: "front", label: "front()" },
-  { id: "size", label: "size()" },
-  { id: "clear", label: "clear()" },
+  { id: "enqueue", label: "enqueue(v)", args: [{ name: "v", kind: "number" }], complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "dequeue", label: "dequeue()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "front", label: "front()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "size", label: "size()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "clear", label: "clear()", complexity: { time: "O(n)", space: "O(1)" } },
 ];
 export function queueRunOps(cmds: OpCommand[]): Step[] {
   const q: number[] = [];
@@ -194,13 +194,13 @@ export function queueRunOps(cmds: OpCommand[]): Step[] {
 // DEQUE
 // =====================================================================
 export const dequeOpsDefs: OpDef[] = [
-  { id: "push_back", label: "push_back(v)", args: [{ name: "v", kind: "number" }] },
-  { id: "push_front", label: "push_front(v)", args: [{ name: "v", kind: "number" }] },
-  { id: "pop_back", label: "pop_back()" },
-  { id: "pop_front", label: "pop_front()" },
-  { id: "front", label: "front()" },
-  { id: "back", label: "back()" },
-  { id: "clear", label: "clear()" },
+  { id: "push_back", label: "push_back(v)", args: [{ name: "v", kind: "number" }], complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "push_front", label: "push_front(v)", args: [{ name: "v", kind: "number" }], complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "pop_back", label: "pop_back()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "pop_front", label: "pop_front()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "front", label: "front()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "back", label: "back()", complexity: { time: "O(1)", space: "O(1)" } },
+  { id: "clear", label: "clear()", complexity: { time: "O(n)", space: "O(1)" } },
 ];
 export function dequeRunOps(cmds: OpCommand[]): Step[] {
   const d: number[] = [];

@@ -47,6 +47,7 @@ export interface OpDef {
   label: string;
   args?: OpArg[];
   description?: string;
+  complexity?: { time: string; space: string };
 }
 export interface OpCommand {
   op: string;
